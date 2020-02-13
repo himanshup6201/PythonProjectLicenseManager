@@ -1,9 +1,12 @@
 from zipfile import *
 import json,os,subprocess,multiprocessing,time
+from colorama import init,Fore
+from datetime import datetime
+init()
 def main(): #{
     p1 = multiprocessing.Process(target=runjar);
     p1.start();
-    time.sleep(10);
+    time.sleep(7);
     #p2 = multiprocessing.Process(target=print_cube, args=(10, )) 
     file_name="ForPython.zip";
     zip_archive=ZipFile(file_name);
@@ -14,7 +17,7 @@ def main(): #{
         for (k, v) in data.items():
             print("Key: " + k)
             print("Value: " + str(v))
-        print('Success data printing')
+        print(Fore.GREEN,'Success data printing')
     #class Test(object):
         #def __init__(self, data):
 	    #self.__dict__ =json.loads(data)
@@ -42,6 +45,11 @@ def main(): #{
     #print(person.toll_Admin_Name)
     os.remove('D://Python//PythonWorkspace//user.json');
     os.remove('D://Python//PythonWorkspace//ForPython.zip');
+    #import time;
+    ts = time.time()
+    dt_object = datetime.fromtimestamp(ts)
+    print("dt_object =", dt_object)
+    #print(ts)
     #}
 def runjar(): #{
     callingjar="java -jar D://Python//PythonWorkspace//javatojson-0.0.1-SNAPSHOT.jar"
